@@ -1,0 +1,22 @@
+{
+  "name": "uploadimagens",
+  "version": "1.0.0",
+  "description": "CRUD com imagens",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skinny67/UploadImagensMulter.git"
+  },
+  "author": "Pablo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skinny67/UploadImagensMulter/issues"
+  },
+  "homepage": "https://github.com/skinny67/UploadImagensMulter#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
