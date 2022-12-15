@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const Usuario = require('./models/usuario');
+const upload = require('./config/configMulter');
 
 // Conexão com o banco de dados e porta da aplicação
 mongoose.set('strictQuery', false);
@@ -64,12 +65,12 @@ app.get('/add', (req, res)=>{
     res.render('adiciona.ejs')
 });
 
-app.post('/add', (req, res)=>{
+app.post('/add',upload.single("txtFoto"), (req, res)=>{
     var usuario = new Usuario({
         nome:req.body.txtNome,
         email:req.body.txtEmail,
         senha:req.body.txtSenha,
-        foto:req.body.txtFoto
+        foto:req.file.filename
     });
     usuario.save((err)=>{
         if(err){
@@ -104,12 +105,12 @@ app.get('/edit/:id', (req, res)=>{
     })
 });
 
-app.post('/edit/:id', (req, res)=>{
+app.post('/edit/:id',upload.single("txtFoto"), (req, res)=>{
     Usuario.findByIdAndUpdate(req.params.id,{ 
         nome:req.body.txtNome,
         email:req.body.txtEmail,
         senha:req.body.txtSenha,
-        foto:req.body.txtFoto
+        foto:req.file.fieldname
     },(err, docs)=>{
         res.redirect('/')
     }
