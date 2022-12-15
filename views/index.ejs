@@ -7,7 +7,41 @@
     <title>Página Inicial</title>
 </head>
 <body>
-    <h1>Página Inicial</h1>
-    <p>Seja Bem-vindo á pagina inicial!</p>
+    <h1>Lista de Usuarios Cadastrados</h1>
+    <p>Seja Bem-vindo á pagina de usuarios cadastrados!</p>
+    <ul>
+        <li><a href="/add">Adiciona</a></li>
+        <li><a href="/">Listar</a></li>
+    </ul>
+    <br>
+    <form method="post">
+        Pesquisar: <input type="text" name="txtPesquisa" placeholder="Pesquisa">
+        <input type="submit" value="Pesquisar">
+    </form><br>
+    <table border="1px">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Foto</th>
+            <th>Deletar</th>
+            <th>Editar</th>
+        </tr>
+        <% for(usuario of Usuarios) { %>
+        <tr>
+            <td><%=usuario._id%></td>
+            <td><%=usuario.nome%></td>
+            <td><%=usuario.email%></td>
+            <td><%=usuario.foto%></td>
+            <td>
+                <a href="/del/<%=usuario._id%>">Deletar</a>
+            </td>
+            <td>
+                <a href="/edit/<%=usuario._id%>">Editar</a>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+
 </body>
 </html>
